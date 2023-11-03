@@ -8,26 +8,24 @@ export function checkGuess(userInput, chosenWord) {
 
 export const compareHighlight = (userInput, chosenWord) => {
 
-    const colors = ['yellow', 'green', 'gray'];
-    let chosen = [...chosenWord];
+    // const colors = ['yellow', 'green', 'gray'];
+    let unmatchedLetterInChosen = [...chosenWord];
 
     console.log("userInput:", userInput);
     console.log("chosenWord:", chosenWord); 
 
+    return userInput.map((letter, index) => {
+        if (letter == chosenWord[index]) {
+            unmatchedLetterInChosen[index] = null;
+            return 'green';
+        }
 
-
-    // return userInput.map((letter, index) => {
-    //     if (letter == chosenWord[index]) {
-    //         unmatchedLetterInChosen[index] = null;
-    //         return 'green';
-    //     }
-
-    //     const matchIdx = unmatchedLetterInChosen.indexOf(letter);
-    //     if (matchIdx !== -1 && matchIdx < index) {
-    //         unmatchedLetterInChosen[matchIdx] = null;
-    //         return 'yellow';
-    //         }
-    //     return 'gray';
-    // });
+        const matchIdx = unmatchedLetterInChosen.indexOf(letter);
+        if (matchIdx !== -1 && matchIdx < index) {
+            unmatchedLetterInChosen[matchIdx] = null;
+            return 'yellow';
+            }
+        return 'gray';
+    });
 }
   
