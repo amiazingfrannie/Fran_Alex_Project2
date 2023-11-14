@@ -16,7 +16,17 @@ export default function DynamicGrid({ rows, columns, userInput, handleInputChang
         if (event.key === 'Backspace') {
             event.preventDefault(); 
             const currentInput = userInput[index];
-            let targetIndex = currentInput ? index : index - 1;
+            console.log('current input', currentInput);
+            let targetIndex;
+            if (currentInput) {
+                targetIndex = index;
+            } else {
+                if(index % columns !== 0) {
+                    targetIndex = index - 1;
+                }
+            }
+            // let targetIndex = currentInput ? index : index - 1;
+            console.log('target index', targetIndex);
             targetIndex = Math.max(targetIndex, 0);
             handleInputChange(targetIndex, '');
             inputRefs.current[targetIndex]?.focus();

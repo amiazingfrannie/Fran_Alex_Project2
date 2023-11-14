@@ -5,7 +5,7 @@ import './App.css'
 import { CountContext } from './CountProvider';
 import Header from './Header';
 import React from 'react';
-import NavBar from './NavBar/NavBar';
+// import NavBar from './NavBar/NavBar';
 
 
 // homepage
