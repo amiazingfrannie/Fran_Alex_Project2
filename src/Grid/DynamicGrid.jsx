@@ -1,13 +1,25 @@
 import React, { useRef } from 'react';
 import './DynamicGrid.css';
 
-export default function DynamicGrid({ rows, columns, userInput, handleInputChange, currentRow, compareResults }) {
+export default function DynamicGrid({ rows, columns, userInput, handleInputChange, currentRow, compareResults, isGameOver }) {
     
     const inputRefs = useRef(Array(rows * columns).fill(null));
 
     const focusNextInput = (index) => {
-        if ((index + 1) % columns !== 0 && inputRefs.current[index + 1]) {
-            inputRefs.current[index + 1].focus();
+        const nextIndex = index + 1;
+        if (nextIndex < rows * columns && inputRefs.current[nextIndex]) {
+            inputRefs.current[nextIndex].focus();
+        }
+    };
+    
+    const handleKeyDown = (event, index) => {
+        if (event.key === 'Backspace') {
+            event.preventDefault(); 
+            const currentInput = userInput[index];
+            let targetIndex = currentInput ? index : index - 1;
+            targetIndex = Math.max(targetIndex, 0);
+            handleInputChange(targetIndex, '');
+            inputRefs.current[targetIndex]?.focus();
         }
     };
     
@@ -26,12 +38,13 @@ export default function DynamicGrid({ rows, columns, userInput, handleInputChang
                     } else {
                         e.target.value = '';  
                     }
-                }}                
+                }}     
+                onKeyDown={(e) => handleKeyDown(e, index)}           
                 maxLength={1}
                 pattern="[A-Za-z]"
                 style={{backgroundColor: compareResults[index]}}
                 ref={(el) => inputRefs.current[index] = el}
-                disabled={Math.floor(index / columns) !== currentRow}  // disable input not in the current row
+                disabled={isGameOver || Math.floor(index / columns) !== currentRow}  // disable input not in the current row
                 />
             ))}
         </div>

@@ -1,0 +1,113 @@
+/* relative path! */
+@font-face {
+    font-family: 'BloodyTerror';
+    src: url('../commonStyle/fonts/BloodyTerror.ttf') format('truetype');
+} 
+@font-face {
+    font-family: 'Strange';
+    src: url('../commonStyle/fonts/SomethingStrange.ttf') format('truetype');
+} 
+@font-face {
+    font-family: 'Monster';
+    src: url('../commonStyle/fonts/Mrmonster.ttf') format('truetype');
+} 
+@font-face {
+    font-family: 'Normal';
+    src: url('../commonStyle/fonts/YatraOne-Regular.ttf') format('truetype');
+} 
+
+/* common.css */
+body {
+    /* font-family: 'Normal'; */
+    margin: 0;
+    padding: 0;
+    background-color: #f3e0d4 !important;
+}
+    /* background-image: url('../commonStyle/pics/bg.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center;  */
+
+/* Basic Navbar Styles */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 7vh;
+    background-color: #ed916a;
+}
+
+/* Style for the "Wordle" brand to ensure it's in the center */
+.navbar .navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 36px;
+    font-weight: bold;
+    padding: 5px 5px;
+}
+
+/* Menu item styles */
+.navbar-nav .nav-link {
+    color: #333;
+    padding: 0.5rem 1rem;
+    font-size: 32px;
+    margin-right: 20px;
+}
+
+/* .navbar-nav .nav-link:hover {
+    color: #007bff;
+} */
+
+.navbar .navbar-nav .nav-link:focus, 
+.navbar .navbar-nav .nav-link:hover {
+    color: rgba(192, 21, 21, 0.783);
+}
+
+/* Dropdown styles */
+.nav-item .dropdown-menu {
+    border: none;
+    box-shadow: 0 2px 8px  #f4efeb;
+    font-size: 24px;
+}
+
+.nav-item .dropdown-item:hover {
+    background-color:  #f4efeb;
+    color: rgba(192, 21, 21, 0.783);
+}
+
+/* Mobile styles */
+@media (max-width: 992px) {
+
+    .navbar .navbar-brand {
+        font-size: 24px;
+    }
+    
+    /* Menu item styles */
+    .navbar-nav .nav-link {
+        font-size: 20px;
+    }
+
+    .navbar-brand {
+        transform: none;
+        margin-right: auto;
+    }
+    
+    .navbar-nav .dropdown-menu.show {
+        width: fit-content;
+        background-color: #f8f9fa;
+    }
+
+    .navbar-nav .dropdown-menu .dropdown-item{
+        padding: 2px 5px;
+    }
+
+    .navbar-nav .dropdown-menu {
+        position: relative;
+        width: 100%; /* take full width of its parent */
+        left: 0; /* start from left edge of its parent */
+        transform: none; /* remove any translations */
+        font-size: 16px;
+        box-shadow: none;
+    }
+}
+
+
