@@ -1,0 +1,21 @@
+.app-container {
+    text-align: center; 
+}
+
+.content {
+    display: inline-block; 
+    /* margin-top: 30px;  */
+    font-family: 'Strange';
+}
+
+.centered-image {
+    margin-top: 10vh;
+    max-width: 30vh; 
+    height: auto; 
+}
+
+.text-below-image {
+    margin-top: 8vh; 
+    margin-bottom: 10px;
+    font-size: 22px; 
+}

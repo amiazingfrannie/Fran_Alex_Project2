@@ -1,16 +1,24 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import './DynamicGrid.css';
 
-export default function DynamicGrid({ rows, columns, userInput, handleInputChange, currentRow, compareResults, isGameOver }) {
+export default function DynamicGrid({ rows, columns, userInput, handleInputChange, currentRow, compareResults, isGameOver, currentIndex }) {
     
+    // const inputRefs = useRef(Array(rows * columns).fill(null));
+
+    // const focusNextInput = (currentIndex) => {
+    //     console.log("focus on next");
+    //     const nextIndex = currentIndex + 1;
+    //     if (nextIndex < rows * columns && inputRefs.current[nextIndex]) {
+    //         inputRefs.current[nextIndex].focus();
+    //     }
+    // };
     const inputRefs = useRef(Array(rows * columns).fill(null));
 
-    const focusNextInput = (index) => {
-        const nextIndex = index + 1;
-        if (nextIndex < rows * columns && inputRefs.current[nextIndex]) {
-            inputRefs.current[nextIndex].focus();
+    useEffect(() => {
+        if (inputRefs.current[currentIndex]) {
+            inputRefs.current[currentIndex].focus();
         }
-    };
+    }, [currentIndex]);
     
     const handleKeyDown = (event, index) => {
         if (event.key === 'Backspace') {
@@ -39,17 +47,19 @@ export default function DynamicGrid({ rows, columns, userInput, handleInputChang
                 <input
                 key={index}
                 value={userInput[index]}
-                onChange={(e) => {
-                    if (/^[A-Za-z]$/.test(e.target.value)) {
-                        handleInputChange(index, e.target.value.toUpperCase());
-                        if (e.target.value.length >= 1) {
-                            focusNextInput(index);
-                        }
-                    } else {
-                        e.target.value = '';  
-                    }
-                }}     
-                onKeyDown={(e) => handleKeyDown(e, index)}           
+                onChange={(e) => handleKeyDown(e, index)}
+                // onChange={(e) => {
+                //     // if (/^(Enter|Backspace|[A-Za-z])$/.test(e.target.value)) {
+                //         console.log('onChange');
+                //         handleInputChange(index, e.target.value);
+                //         // if (e.target.value.length >= 1) {
+                //         //     focusNextInput(index);
+                //         // }
+                //     // } else {
+                //     //     e.target.value = '';  
+                //     // }
+                // }}     
+                // onKeyDown={(e) => handleKeyDown(e, index)}           
                 maxLength={1}
                 pattern="[A-Za-z]"
                 style={{backgroundColor: compareResults[index]}}

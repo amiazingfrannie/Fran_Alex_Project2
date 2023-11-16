@@ -1,0 +1,40 @@
+.app-container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Normal'; 
+}
+  
+.message {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1rem;
+    color: #cf2204;
+    transition: all 0.3s ease;
+}
+  
+.prompt {
+    text-align: center;
+    /* margin-top: 3px; */
+    font-size: 0.8rem; 
+    color: grey;
+}
+
+.extra-info {
+    text-align: center;
+    /* margin-top: 3px; */
+    font-size: 1rem; 
+    font-family: 'Strange';
+    color: #cf2204;
+}
+
+
+/* @media (max-width: 600px) {
+    .message, .prompt, .extra-info {
+      font-size: 0.8rem;
+    }
+}
+   */
+
+
+  

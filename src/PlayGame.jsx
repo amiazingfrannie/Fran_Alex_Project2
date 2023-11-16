@@ -1,3 +1,5 @@
+import './commonStyle/common.css'; 
+import './PlayGame.css';
 import React, { useState } from 'react';
 import DynamicGrid from './Grid/DynamicGrid.jsx';
 import { initializeWord, checkGuess, compareHighlight } from './gameUtil.jsx';
@@ -5,13 +7,15 @@ import sevenEnglishWords from '../src/assets/7_letter_words.json'
 import sixEnglishWords from '../src/assets/six-letter-words.json'
 import Header from './Header.jsx';
 import Keyboard from './Keyboard/Keyboard.jsx';
+import BasicNav from './BasicNav/BasicNav.jsx';
+import Button from '@mui/material/Button';
 
 
 export default function PlayGame({ rows, columns, words }) {
 
     console.log({rows, columns, words});
     const [userInput, setUserInput] = useState(Array(columns * rows).fill(''));
-    const [selectedKey, setSelectedKey] = useState('');
+    // const [selectedKey, setSelectedKey] = useState('');
     const [guesses, setGuesses] = useState(0);
     const [chosenWord, setChosenWord] = useState(() => initializeWord(words));
     const [message, setMessage] = useState('');
@@ -52,7 +56,7 @@ export default function PlayGame({ rows, columns, words }) {
         } else if (index >= 0 && index < newInput.length) {
             let lineEnd = (guesses + 1) * columns;
             if (index < lineEnd) {
-                // console.log('adding character ',value,' to ',index,' index')
+                console.log('adding character ',value,' to ',index,' index')
                 newInput[index] = value;
                 setUserInput(newInput);
                 setCurrentIndex(index + 1);
@@ -133,10 +137,24 @@ export default function PlayGame({ rows, columns, words }) {
 
     return (
         <div>
-            <div className="App" onKeyDown={handleKeyPress} /*onClick={() => setMessage('')}*/>
-                <Header />
-                <div className="prompt">Please enter a word with {columns} letters in the grid.</div>
+            <div className="app-container" onKeyDown={handleKeyPress} /*onClick={() => setMessage('')}*/>
+                <BasicNav />
                 {message && <div className="message">{message}</div>}
+                {(guesses === rows || message === "Congratulations! Would you like to try again?") && (
+                    // <button onClick={handleResetClick}>Try Again!</button>
+                    <Button onClick={handleResetClick} size="small" sx={{
+                        backgroundColor: '#ee652a', // Example background color
+                        fontFamily: 'Normal',
+                        fontSize: '16px',
+                        color: 'white', // Text color
+                        '&:hover': {
+                            backgroundColor: '#d34d13', // Hover state background color
+                        },
+                        // padding: '10px 20px', // Padding
+                        borderRadius: '5px', // Border radius
+                        // Add more styles as needed
+                        }}>Try Again</Button>
+                )}
                 <DynamicGrid
                     rows={rows} 
                     columns={columns} 
@@ -145,14 +163,14 @@ export default function PlayGame({ rows, columns, words }) {
                     currentRow={guesses} 
                     compareResults={compareResults} 
                     isGameOver={isGameOver}
+                    currentIndex={currentIndex}
                 />
+                <div className="prompt">Please enter a word with {columns} letters in the grid.</div>
+                <div className='prompt'> Press Enter to submit.</div>
+                <div className="extra-info">You have {rows - guesses} guesses left.</div>
                 <Keyboard 
                     handleKeyPress={handleKeyPress}
                 />
-                <div>press Enter to submit. you have {rows - guesses} guesses left.</div>
-                {(guesses === rows || message === "Congratulations! Would you like to try again?") && (
-                    <button onClick={handleResetClick}>Try Again!</button>
-                )}
                 </div>
         </div>
     );

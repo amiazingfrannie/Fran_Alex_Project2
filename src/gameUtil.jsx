@@ -33,7 +33,7 @@ export const compareHighlight = (userInput, chosenWord) => {
         } else {
             userInput.map((letter, index) => {
                 if (compareColors[index] != 'green') {
-                    let matchIdx = unmatchedLetterInChosen.indexOf(letter);
+                    let matchIdx = unmatchedLetterInChosen.indexOf(letter.toLowerCase());
                     if (matchIdx !== -1 ) {
                         unmatchedLetterInChosen[matchIdx] = null;
                         compareColors[index] = 'yellow';
