@@ -3,14 +3,19 @@ export function initializeWord(words) {
 }
   
 export function checkGuess(userInput, chosenWord) {
-    return userInput.join('') === chosenWord;
+    let userInputString = userInput.join('').toLowerCase()
+
+    console.log(userInputString, " and ", chosenWord)
+    return userInputString === chosenWord;
 }
 
 export const compareHighlight = (userInput, chosenWord) => {
 
     const colors = ['yellow', 'green'];
+
     let unmatchedLetterInChosen = [...chosenWord];
     console.log(typeof(unmatchedLetterInChosen), unmatchedLetterInChosen)
+
     let compareColors = Array(unmatchedLetterInChosen.length).fill('gray');
 
     console.log("userInput:", userInput);
@@ -19,7 +24,7 @@ export const compareHighlight = (userInput, chosenWord) => {
     for (let i = 0; i< colors.length; i++) {
         if (i == 0) {
             userInput.map((letter, index) => {
-                if (letter == unmatchedLetterInChosen[index]) {
+                if (letter.toLowerCase() == unmatchedLetterInChosen[index]) {
                     unmatchedLetterInChosen[index] = null;
                     compareColors[index] = 'green';
                 }

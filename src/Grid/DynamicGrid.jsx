@@ -41,7 +41,7 @@ export default function DynamicGrid({ rows, columns, userInput, handleInputChang
                 value={userInput[index]}
                 onChange={(e) => {
                     if (/^[A-Za-z]$/.test(e.target.value)) {
-                        handleInputChange(index, e.target.value);
+                        handleInputChange(index, e.target.value.toUpperCase());
                         if (e.target.value.length >= 1) {
                             focusNextInput(index);
                         }

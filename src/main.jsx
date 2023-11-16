@@ -11,13 +11,13 @@ import PlayHard from './PlayHard.jsx';
 const normalState = {
     rows: 6,
     columns: 6,
-    words: ["banana", "strike", "wordle", "bottom"]
+    words: ["banana", "strike", "bottom"]
 };
 
 const hardState = {
     rows: 5,
     columns: 7,
-    words: ["sneaker", "notable", "expense"]
+    words: ["winning", "notable", "expense"]
 };
 
 ReactDOM.createRoot(document.getElementById('root')).render(
