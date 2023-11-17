@@ -24,7 +24,7 @@ const hardState = {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <Router basename='/5610_Project2'>
+      <Router>
         <Routes>
           <Route path='/' element={<App />} />
           <Route path='/rules' element={<Rules />} />
