@@ -14,7 +14,7 @@ function BasicNav() {
           <Navbar.Brand href="/" className='navbar-custom'>Wordle</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/rule">Rules</Nav.Link>
+            <Nav.Link href="/rules">Rules</Nav.Link>
             <NavDropdown title="Play" id="basic-nav-dropdown">
               <NavDropdown.Item href="/game/normal">Play Normal</NavDropdown.Item>
               <NavDropdown.Item href="/game/hard">Play Hard</NavDropdown.Item>
