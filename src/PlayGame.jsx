@@ -5,7 +5,6 @@ import DynamicGrid from './Grid/DynamicGrid.jsx';
 import { initializeWord, checkGuess, compareHighlight } from './gameUtil.jsx';
 import sevenEnglishWords from '../src/assets/7_letter_words.json'
 import sixEnglishWords from '../src/assets/six-letter-words.json'
-import Header from './Header.jsx';
 import Keyboard from './Keyboard/Keyboard.jsx';
 import BasicNav from './BasicNav/BasicNav.jsx';
 import Button from '@mui/material/Button';
@@ -83,7 +82,7 @@ export default function PlayGame({ rows, columns, words }) {
             return;
         }
 
-        if (!sixEnglishWords.includes(currentRowInputCheck.toUpperCase()) && !sevenEnglishWords.some(o => o.word === currentRowInputCheck.toLowerCase())) {
+        if (!sixEnglishWords.includes(currentRowInputCheck.toUpperCase()) && !sevenEnglishWords.includes(currentRowInputCheck.toLowerCase())) {
             setMessage("Not a valid English word, please try a different word.");
             return;
         }

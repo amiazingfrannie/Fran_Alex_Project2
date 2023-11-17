@@ -2,7 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
-import CountProvider from './CountProvider.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Rules from './Rules.jsx';
 import PlayNormal from './PlayNormal.jsx';
@@ -25,15 +24,13 @@ const hardState = {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <CountProvider>
-      <Router>
+      <Router basename="/5610_Project2">
         <Routes>
           <Route path='/' element={<App />} />
           <Route path='/rules' element={<Rules />} />
-          <Route path='/play/normal' element={<PlayNormal {...normalState} />} />
-          <Route path='/play/hard' element={<PlayHard {...hardState} />} />
+          <Route path='/game/normal' element={<PlayNormal {...normalState} />} />
+          <Route path='/game/hard' element={<PlayHard {...hardState} />} />
         </Routes>
       </Router>
-    </CountProvider>
   </React.StrictMode>
 );

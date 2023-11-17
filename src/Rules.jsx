@@ -1,5 +1,4 @@
 import BasicCard from "./Card/BasicCard";
-import Header from "./Header";
 import BasicNav from "./BasicNav/BasicNav";
 
 export default function Rules() {
