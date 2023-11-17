@@ -6,7 +6,7 @@ export function checkGuess(userInput, chosenWord) {
     let userInputString = userInput.join('').toLowerCase()
 
     console.log(userInputString, " and ", chosenWord)
-    return userInputString === chosenWord;
+    return userInputString === chosenWord.toLowerCase();
 }
 
 export const compareHighlight = (userInput, chosenWord) => {

@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 
 export default function PlayGame({ rows, columns, words }) {
 
-    console.log({rows, columns, words});
+    console.log('-----------------------------------------------------');
     const [userInput, setUserInput] = useState(Array(columns * rows).fill(''));
     // const [selectedKey, setSelectedKey] = useState('');
     const [guesses, setGuesses] = useState(0);
@@ -44,24 +44,25 @@ export default function PlayGame({ rows, columns, words }) {
 
         if (value === 'Backspace' && !isGameOver){
             let lineStart = (guesses * columns)
-
             if (index > lineStart) {
-                // console.log('removing character ', newInput[index-1],' at ',index-1,' index')
+                console.log('removing character ', newInput[index-1],' at ',index-1,' index')
                 newInput[index - 1] = '';
                 setUserInput(newInput);
                 setCurrentIndex(index - 1);
+                setMessage('');
             } else {
-                console.log('cannot backspace')
+                console.log('cannot backspace|| currentIndex = ', currentIndex)
             }
-        } else if (index >= 0 && index < newInput.length) {
+        } else if (index >= 0 && index < newInput.length && !isGameOver) {
             let lineEnd = (guesses + 1) * columns;
             if (index < lineEnd) {
                 console.log('adding character ',value,' to ',index,' index')
-                newInput[index] = value;
+                newInput[index] = value.toUpperCase();
                 setUserInput(newInput);
                 setCurrentIndex(index + 1);
+                setMessage('');
             } else {
-                console.log('cannot type beyond end of line')
+                console.log('cannot type beyond end of line || currentIndex = ', currentIndex)
             }
         }
     };
@@ -83,13 +84,12 @@ export default function PlayGame({ rows, columns, words }) {
         }
 
         if (!sixEnglishWords.includes(currentRowInputCheck.toUpperCase()) && !sevenEnglishWords.some(o => o.word === currentRowInputCheck.toLowerCase())) {
-            console.log('Not a valid word - or not of correct length - try afain')
             setMessage("Not a valid English word, please try a different word.");
             return;
         }
 
-        const results = compareHighlight(currentRowInput, chosenWord);        
-        console.log('color is: ', results);
+        const results = compareHighlight(currentRowInput, chosenWord.toLowerCase());        
+        // console.log('color is: ', results);
 
         if (checkGuess(currentRowInput, chosenWord)) {
             console.log('checkGuess: ', checkGuess(currentRowInput, chosenWord), "|| ", currentRowInput, " == ", chosenWord)

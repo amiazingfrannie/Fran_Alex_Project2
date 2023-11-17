@@ -10,10 +10,7 @@ const Keyboard = ({ handleKeyPress }) => {
     ]
 
      const handleOnClick = (pressed) => {
-
          console.log('Pressed:', pressed, typeof(pressed));
-        //  const keyAsString = String(pressed);
-
          if (pressed === '⌫') {
            handleKeyPress({key : 'Backspace'});
          } else if (pressed === 'Enter') {
@@ -28,7 +25,7 @@ const Keyboard = ({ handleKeyPress }) => {
           {keyboardLayout.map((row, rowIndex) => (
             <div key={rowIndex}>
               {row.map((key, keyIndex) => (
-                <button key={keyIndex} onClick={() => handleOnClick(key)}>
+                <button key={keyIndex} onMouseDown={() => handleOnClick(key)}>
                   {key}
                 </button>
               ))}
