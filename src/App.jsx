@@ -13,7 +13,7 @@ export default function App() {
         <div className="app-container">
         <BasicNav />
         <div className="content">
-            <img src='../src/commonStyle/pics/ghost.jpg' alt="Descriptive Alt Text" className="centered-image" />
+            <img src='../src/commonStyle/pics/ghost.png' alt="Descriptive Alt Text" className="centered-image" />
             <p className="text-below-image">Wanna take a guess?</p>
             <Link to="/play/normal" style={{ textDecoration: 'none' }}>
                 <Button size="small" sx={{
