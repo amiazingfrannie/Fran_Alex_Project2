@@ -1,6 +1,7 @@
 // HomePage File
 import './App.css'
 import './commonStyle/common.css'; 
+import ghost from '../src/commonStyle/pics/ghost'
 import React from 'react';
 import BasicNav from './BasicNav/BasicNav';
 import Button from '@mui/material/Button';
@@ -13,7 +14,7 @@ export default function App() {
         <div className="app-container">
         <BasicNav />
         <div className="content">
-            <img src='../src/commonStyle/pics/ghost.png' alt="Descriptive Alt Text" className="centered-image" />
+            <img src={ghost} alt="Spooky Ghost" className="centered-image" />
             <p className="text-below-image">Wanna take a guess?</p>
             <Link to="/play/normal" style={{ textDecoration: 'none' }}>
                 <Button size="small" sx={{
