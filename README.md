@@ -1,13 +1,8 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+EXTRA-CREDIT- 
+    We successfully added a valid word checker that compares the input word with our list of valid words (6 and 7 letters long)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-With your submission, you must include a writeup that touches on the following points.  You may discuss any other ideas that you deem salient to this work:
 WRITEUP:
 - What were some challenges you faced while making this app?
     1. The most notable challenge we faced while making this app was related to how the on-screen keyboard and physcial keyboard manage input. Due to the order of our implementation, the DynamicGrid component was managing handling both the display logic and the keyboardPress logic. This made it so that when we initially implemented the on-screen keyboard, they did not have access to the same index variable which both referenced and controlled where the next letter should be placed. When used independently of one another, there were few bugs. However, if in a single line of input, a user opted to type using both keyboards while simultaneously backspacing, index issues would arise. 
