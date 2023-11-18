@@ -1,7 +1,7 @@
 // HomePage File
 import './App.css'
 import './commonStyle/common.css'; 
-import ghost from './src/commonStyle/pics/ghost'
+import ghost from './commonStyle/pics/ghost'
 import React from 'react';
 import BasicNav from './BasicNav/BasicNav';
 import Button from '@mui/material/Button';
