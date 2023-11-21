@@ -16,7 +16,7 @@ export default function App() {
         <div className="content">
             <img src={ghost} alt="Spooky Ghost" className="centered-image" />
             <p className="text-below-image">Wanna take a guess?</p>
-            <Link to="/play/normal" style={{ textDecoration: 'none' }}>
+            <Link to="/game/normal" style={{ textDecoration: 'none' }}>
                 <Button size="small" sx={{
                     backgroundColor: '#ee652a', // Example background color
                     fontFamily: 'Normal',
